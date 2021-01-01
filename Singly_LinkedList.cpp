@@ -241,7 +241,7 @@ public:
 
 int main()
 {
-    system("color 04");
+    system("color A");
     Code_Node Obj;
     bool Goto = true;
     while (Goto == true)
@@ -255,9 +255,9 @@ int main()
         cout << "Press 5  For View   Front\n";
         cout << "Press 6  For View   Tail\n";
         cout << "Press 7  For View   All\n";
-        cout << "Press 8  For View   IsEmpty\n";
+        cout << "Press 8  For View   IsEmpty?\n";
         cout << "Press 9  For Search Data\n";
-        cout << "Press 10  For Delete Front\n";
+        cout << "Press 10 For Delete Front\n";
         cout << "Press 11 For Delete Tail\n";
         cout << "Press 12 For Delete Node\n";
         cout << "Press 13 For Exit\n";
