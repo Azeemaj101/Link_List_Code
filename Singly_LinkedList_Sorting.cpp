@@ -66,6 +66,9 @@ class Node_Fun
 int main()
 {
     Node_Fun Obj;
+    system("color 0A");
+    system("cls");
+    cout<<"Sorted LinkedList => ";
     Obj.Insert_Last(-119);
     Obj.Insert_Last(0);
     Obj.Insert_Last(-1);

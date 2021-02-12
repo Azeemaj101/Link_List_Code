@@ -16,7 +16,7 @@ public:
     void insertLast(int newdata)
     {
         Node *NewNode, *t;
-        NewNode = (Node *)malloc(sizeof(Node));
+        NewNode = new Node();
         NewNode->data = newdata;
         NewNode->next = NULL;
         if (head == NULL)
@@ -37,7 +37,7 @@ public:
     }
     void insertStart(int newdata)
     {
-        Node *newnode = (Node *)malloc(sizeof(Node));
+        Node *newnode = new Node();
         newnode->data = newdata;
         newnode->prev = NULL;
         newnode->next = head;
@@ -56,7 +56,7 @@ public:
         }
         else
         {
-            p = (Node *)malloc(sizeof(Node));
+            p = new Node();
             p->prev = ptr;
             p->next = ptr->next;
             p->data = data;
@@ -76,7 +76,7 @@ public:
         }
         else
         {
-            p = (Node *)malloc(sizeof(Node));
+            p = new Node();
             p->next = ptr;
             p->prev = ptr->prev;
             p->data = data;
@@ -111,7 +111,7 @@ public:
         {
             ptr->prev->next = ptr->next;
         }
-        free(ptr);
+        delete(ptr);
     }
     void DeleteFirst()
     {
@@ -128,7 +128,7 @@ public:
             cout << "Delete First Node (Only 1 Node in the list)\n";
             head = NULL;
         }
-        free(t);
+        delete(t);
     }
     void DeleteLast()
     {
@@ -148,7 +148,7 @@ public:
             cout << "Delete Last Node (Only 1 Node in the list)\n";
             head = NULL;
         }
-        free(t);
+        delete(t);
     }
     void display()
     {
@@ -159,6 +159,21 @@ public:
             cout << ptr->data << " ";
             ptr = ptr->next;
         }
+    }
+    void display_Reverse()
+    {
+        Node *ptr;
+        ptr = head;
+        while (ptr->next != NULL)
+        {
+            ptr = ptr->next;
+        }
+        while (ptr != NULL)
+        {
+            cout << ptr->data << " ";
+            ptr = ptr->prev;
+        }
+
     }
     int FirstDisplay()
     {
@@ -226,11 +241,12 @@ int main()
         cout << "Press 5  For View   First\n";
         cout << "Press 6  For View   Last\n";
         cout << "Press 7  For View   All\n";
-        cout << "Press 8  For Search Data\n";
-        cout << "Press 9  For Delete First\n";
-        cout << "Press 10 For Delete Last\n";
-        cout << "Press 11 For Delete Node\n";
-        cout << "Press 12 For Exit\n";
+        cout << "Press 8  For View   Reverse\n";
+        cout << "Press 9  For Search Data\n";
+        cout << "Press 10  For Delete First\n";
+        cout << "Press 11 For Delete Last\n";
+        cout << "Press 12 For Delete Node\n";
+        cout << "Press 13 For Exit\n";
         cout << "Input = ";
         cin >> val;
         switch (val)
@@ -303,6 +319,14 @@ int main()
         }
         case 8:
         {
+            cout << "All Reverse Doubly Link List is = ";
+            Obj.display_Reverse();
+            cout << endl;
+            system("PAUSE");
+            break;
+        }
+        case 9:
+        {
             int a;
             cout << "Enter ID For Search\n";
             cin >> a;
@@ -319,19 +343,19 @@ int main()
             system("PAUSE");
             break;
         }
-        case 9:
+        case 10:
         {
             Obj.DeleteFirst();
             system("PAUSE");
             break;
         }
-        case 10:
+        case 11:
         {
             Obj.DeleteLast();
             system("PAUSE");
             break;
         }
-        case 11:
+        case 12:
         {
             int serA;
             cout << "Enter ID For Delete \n";
@@ -341,7 +365,7 @@ int main()
             system("PAUSE");
             break;
         }
-        case 12:
+        case 13:
         {
             Goto = false;
         }

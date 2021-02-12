@@ -156,6 +156,105 @@ public:
             delete temp;
         }
     }
+    void Duplicate_DeleteNode()
+    {
+        Node *t = Head;
+        Node *t1 = Head;
+        while (t != NULL)
+        {
+            
+            while (t1->next != NULL)
+            {
+                if (t->Data == t1->next->Data)
+                {
+                    DeleteNode(t1);
+                    cout << "Deleted....\n";
+                    return;
+                }
+                t1 = t1->next;
+            }
+            if (t->next != NULL)
+            {
+                t1 = t->next;
+            }
+            t = t->next;
+        }
+        cout << "Not Found\n";
+    }
+    void Middle_Node()
+    {
+        Node *slow_ptr = Head;
+        Node *fast_ptr = Head;
+        if (Head != NULL)
+        {
+            while (fast_ptr != NULL && fast_ptr->next != NULL)
+            {
+                fast_ptr = fast_ptr->next->next;
+                slow_ptr = slow_ptr->next;
+            }
+            Node *t = Search(slow_ptr->Data);
+            DeleteNode(t);
+            cout << "Deleted...\n";
+        }
+        else
+        {
+            cout << "Empty List\n";
+        }
+    }
+    void reverse()
+    {
+        if (Head != NULL)
+        {
+            Node *t1 = NULL, *t2 = NULL;
+            while (Head != NULL)
+            {
+                t2 = Head->next;
+                Head->next = t1;
+                t1 = Head;
+                Head = t2;
+            }
+            Head = t1;
+            cout << "Done\n";
+        }
+        else
+        {
+            cout << "Empty\n";
+        }
+    }
+    void bubble_sort()
+    {
+        if (Head == NULL)
+        {
+            cout << "Empty\n";
+        }
+        else
+        {
+            int swapped;
+            Node *lPtr;        // left pointer will always point to the start of the list
+            Node *rPrt = NULL; // right pointer will always point to the end of the list
+            do
+            {
+                swapped = 0;
+                lPtr = Head;
+                while (lPtr->next != rPrt)
+                {
+                    if (lPtr->Data > lPtr->next->Data)
+                    {
+                        int Temp;
+                        Temp = lPtr->Data;
+                        lPtr->Data = lPtr->next->Data;
+                        lPtr->next->Data = Temp;
+                        swapped = 1;
+                    }
+                    lPtr = lPtr->next;
+                }
+                //as the largest element is at the end of the list, assign that to rPtr as there is no need to
+                //check already sorted list
+                rPrt = lPtr;
+
+            } while (swapped);
+        }
+    }
     Node *Search(int FV)
     {
         Node *t = Head;
@@ -248,19 +347,23 @@ int main()
     {
         system("CLS");
         int val;
-        cout << "Press 1  For Insert Front\n";
-        cout << "Press 2  For Insert Tail\n";
-        cout << "Press 3  For Insert After  Node\n";
-        cout << "Press 4  For Insert Before Node\n";
-        cout << "Press 5  For View   Front\n";
-        cout << "Press 6  For View   Tail\n";
-        cout << "Press 7  For View   All\n";
-        cout << "Press 8  For View   IsEmpty?\n";
-        cout << "Press 9  For Search Data\n";
-        cout << "Press 10 For Delete Front\n";
-        cout << "Press 11 For Delete Tail\n";
-        cout << "Press 12 For Delete Node\n";
-        cout << "Press 13 For Exit\n";
+        cout << "Press 1  For Insert  Front\n";
+        cout << "Press 2  For Insert  Tail\n";
+        cout << "Press 3  For Insert  After  Node\n";
+        cout << "Press 4  For Insert  Before Node\n";
+        cout << "Press 5  For View    Front\n";
+        cout << "Press 6  For View    Tail\n";
+        cout << "Press 7  For View    All\n";
+        cout << "Press 8  For View    IsEmpty?\n";
+        cout << "Press 9  For Search  Data\n";
+        cout << "Press 10  For Bubble  Sort\n";
+        cout << "Press 11 For Delete  Front\n";
+        cout << "Press 12 For Delete  Tail\n";
+        cout << "Press 13 For Delete  Node\n";
+        cout << "Press 14 For Delete  Duplicate Node\n";
+        cout << "Press 15 For Delete  Middle Node\n";
+        cout << "Press 16 For Reverse LinkedList\n";
+        cout << "Press 17 For Exit\n";
         cout << "Input = ";
         cin >> val;
         switch (val)
@@ -335,13 +438,13 @@ int main()
         {
             bool DA;
             DA = Obj.IsEmpty();
-            if(DA == true)
+            if (DA == true)
             {
-                cout<<"Linked List is Empty\n";
+                cout << "Linked List is Empty\n";
             }
             else
             {
-                cout<<"Linked List is Not Empty\n";
+                cout << "Linked List is Not Empty\n";
             }
             system("PAUSE");
             break;
@@ -366,19 +469,26 @@ int main()
         }
         case 10:
         {
-            Obj.DeleteFront();
-            cout<<"DONE...\n";
+            Obj.bubble_sort();
+            cout << "DONE...\n";
             system("PAUSE");
             break;
         }
         case 11:
         {
-            Obj.DeleteTail();
-            cout<<"DONE...\n";
+            Obj.DeleteFront();
+            cout << "DONE...\n";
             system("PAUSE");
             break;
         }
         case 12:
+        {
+            Obj.DeleteTail();
+            cout << "DONE...\n";
+            system("PAUSE");
+            break;
+        }
+        case 13:
         {
             int serA;
             cout << "All Singly Link List is = ";
@@ -390,11 +500,31 @@ int main()
             system("PAUSE");
             break;
         }
-        case 13:
+        case 14:
+        {
+            Obj.Duplicate_DeleteNode();
+            system("PAUSE");
+            break;
+        }
+        case 15:
+        {
+            Obj.Middle_Node();
+            system("PAUSE");
+            break;
+        }
+        case 16:
+        {
+            Obj.reverse();
+            system("PAUSE");
+            break;
+        }
+        case 17:
         {
             Goto = false;
+            break;
         }
         default:
+            system("PAUSE");
             break;
         }
     }
