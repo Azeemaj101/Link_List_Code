@@ -48,34 +48,6 @@ public:
         NewNode->next = NULL;
     }
 
-    Voter_Node *Search(int id)
-    {
-        Voter_Node *t = Head;
-        if (t == NULL)
-        {
-            return NULL;
-        }
-        else if (t->id == id)
-        {
-            return t;
-        }
-        else
-        {
-            while (t != NULL)
-            {
-                if (t->next != NULL)
-                {
-                    if (t->next->id == id)
-                    {
-                        return t;
-                    }
-                }
-                t = t->next;
-            }
-        }
-        return NULL;
-    }
-
     void Display()
     {
         if (Head == NULL)
