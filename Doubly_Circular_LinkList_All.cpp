@@ -211,6 +211,24 @@ public:
             } while (t != Tail->Next);
         }
     }
+    void display_Reverse()
+    {
+        if (Tail == NULL)
+        {
+            cout << "List is Empty\n";
+        }
+        else
+        {
+            Node *t;
+            t = Tail;
+            do
+            {
+                cout << t->Data << " ";
+                t = t->prev;
+            } while (t != Tail);
+        }
+
+    }
     int FirstDisplay()
     {
         if (Tail == NULL)
@@ -255,11 +273,12 @@ int main()
         cout << "Press 5  For View   First\n";
         cout << "Press 6  For View   Last\n";
         cout << "Press 7  For View   All\n";
-        cout << "Press 8  For Search Data\n";
-        cout << "Press 9  For Delete First\n";
-        cout << "Press 10 For Delete Last\n";
-        cout << "Press 11 For Delete Node\n";
-        cout << "Press 12 For Exit\n";
+        cout << "Press 8  For View   All in Reverse\n";
+        cout << "Press 9  For Search Data\n";
+        cout << "Press 10  For Delete First\n";
+        cout << "Press 11 For Delete Last\n";
+        cout << "Press 12 For Delete Node\n";
+        cout << "Press 13 For Exit\n";
         cout << "Input = ";
         cin >> val;
         switch (val)
@@ -356,6 +375,14 @@ int main()
         }
         case 8:
         {
+            cout << "All Doubly Link List in Reverse Order = ";
+			Obj.display_Reverse();
+            cout << endl;
+            system("PAUSE");
+            break;
+        }
+        case 9:
+        {
             int a;
             cout << "Enter ID For Search\n";
             cin >> a;
@@ -372,7 +399,7 @@ int main()
             system("PAUSE");
             break;
         }
-        case 9:
+        case 10:
         {
             int a = Obj.Delete_First();
             if (a == 1)
@@ -383,7 +410,7 @@ int main()
             system("PAUSE");
             break;
         }
-        case 10:
+        case 11:
         {
             int a = Obj.Delete_Last();
             if (a == 1)
@@ -393,7 +420,7 @@ int main()
             system("PAUSE");
             break;
         }
-        case 11:
+        case 12:
         {
             int serA;
             cout << "All Doubly Link List is = ";
@@ -410,7 +437,7 @@ int main()
             system("PAUSE");
             break;
         }
-        case 12:
+        case 13:
         {
             Goto = false;
         }
